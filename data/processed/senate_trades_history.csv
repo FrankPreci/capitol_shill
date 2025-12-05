@@ -1,4 +1,264 @@
 politician_raw,issuer_raw,pub_date_raw,trade_date_raw,type_raw,size_raw,senator,ticker,asset_description,transaction_date,disclosure_date,amount_est,type,asset_type,sector
+"Sheri Biggs
+RepublicanHouseSC","APOLLO DEBT SOLUTIONS BDC
+N/A","06:01
+Today","28 Oct
+2025",BUY,1K–15K,Sheri Biggs,,APOLLO DEBT SOLUTIONS BDC,2025-10-28,2025-12-05 13:54:11.556883,8000.0,Buy,Stock,
+"Sheri Biggs
+RepublicanHouseSC","OAKTREE STRATEGIC CREDIT FUND A (CAYMAN) LP
+N/A","06:01
+Today","29 Oct
+2025",BUY,1K–15K,Sheri Biggs,,OAKTREE STRATEGIC CREDIT FUND A (CAYMAN) LP,2025-10-29,2025-12-05 13:54:11.556885,8000.0,Buy,Stock,
+"Gary Peters
+DemocratSenateMI","Conagra Brands Inc
+CAG:US","10:15
+Yesterday","13 Nov
+2025",BUY,1K–15K,Gary Peters,CAG,Conagra Brands Inc,2025-11-13,2025-12-04 13:54:11.556886,8000.0,Buy,Stock,
+"Shelley Moore Capito
+RepublicanSenateWV","Meta Platforms Inc
+META:US","07:15
+Yesterday","12 Nov
+2025",BUY,1K–15K,Shelley Moore Capito,META,Meta Platforms Inc,2025-11-12,2025-12-04 13:54:11.556895,8000.0,Buy,Stock,
+"Shelley Moore Capito
+RepublicanSenateWV","Paychex Inc
+PAYX:US","07:15
+Yesterday","12 Nov
+2025",SELL,1K–15K,Shelley Moore Capito,PAYX,Paychex Inc,2025-11-12,2025-12-04 13:54:11.556896,8000.0,Sell,Stock,
+"Shelley Moore Capito
+RepublicanSenateWV","Lowe's Cos Inc
+LOW:US","07:15
+Yesterday","12 Nov
+2025",SELL,1K–15K,Shelley Moore Capito,LOW,Lowe's Cos Inc,2025-11-12,2025-12-04 13:54:11.556898,8000.0,Sell,Stock,
+"Tim Moore
+RepublicanHouseNC","Cracker Barrel Old Country Store Inc
+CBRL:US","3 Dec
+2025","19 Nov
+2025",BUY,15K–50K,Tim Moore,CBRL,Cracker Barrel Old Country Store Inc,2025-11-19,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","GENPREX INC
+GNPX:US","3 Dec
+2025","6 Nov
+2025",BUY,1K–15K,Tim Moore,GNPX,GENPREX INC,2025-11-06,2025-12-03 00:00:00.000000,8000.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","Harley-Davidson Inc
+HOG:US","3 Dec
+2025","20 Nov
+2025",BUY,15K–50K,Tim Moore,HOG,Harley-Davidson Inc,2025-11-20,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","HYSTER YALE INC
+HY:US","3 Dec
+2025","19 Nov
+2025",BUY,15K–50K,Tim Moore,HY,HYSTER YALE INC,2025-11-19,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","HYSTER YALE INC
+HY:US","3 Dec
+2025","11 Nov
+2025",BUY,50K–100K,Tim Moore,HY,HYSTER YALE INC,2025-11-11,2025-12-03 00:00:00.000000,75000.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","HYSTER YALE INC
+HY:US","3 Dec
+2025","13 Nov
+2025",BUY,15K–50K,Tim Moore,HY,HYSTER YALE INC,2025-11-13,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","HYSTER YALE INC
+HY:US","3 Dec
+2025","2 Nov
+2025",BUY,50K–100K,Tim Moore,HY,HYSTER YALE INC,2025-11-02,2025-12-03 00:00:00.000000,75000.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","HYSTER YALE INC
+HY:US","3 Dec
+2025","4 Nov
+2025",BUY,15K–50K,Tim Moore,HY,HYSTER YALE INC,2025-11-04,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","LGI Homes Inc
+LGIH:US","3 Dec
+2025","3 Nov
+2025",BUY,15K–50K,Tim Moore,LGIH,LGI Homes Inc,2025-11-03,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","LGI Homes Inc
+LGIH:US","3 Dec
+2025","4 Nov
+2025",SELL,50K–100K,Tim Moore,LGIH,LGI Homes Inc,2025-11-04,2025-12-03 00:00:00.000000,75000.0,Sell,Stock,
+"Tim Moore
+RepublicanHouseNC","Verizon Communications Inc
+VZ:US","3 Dec
+2025","4 Nov
+2025",BUY,15K–50K,Tim Moore,VZ,Verizon Communications Inc,2025-11-04,2025-12-03 00:00:00.000000,32500.0,Buy,Stock,
+"Tim Moore
+RepublicanHouseNC","Verizon Communications Inc
+VZ:US","3 Dec
+2025","18 Nov
+2025",SELL,100K–250K,Tim Moore,VZ,Verizon Communications Inc,2025-11-18,2025-12-03 00:00:00.000000,175000.0,Sell,Stock,
+"Marjorie Taylor Greene
+RepublicanHouseGA","ISHARES BITCOIN TRUST ETF
+IBIT:US","3 Dec
+2025","20 Nov
+2025",BUY,1K–15K,Marjorie Taylor Greene,IBIT,ISHARES BITCOIN TRUST ETF,2025-11-20,2025-12-03 00:00:00.000000,8000.0,Buy,Stock,
+"Tom Suozzi
+DemocratHouseNY","US TREASURY BILLS
+N/A","2 Dec
+2025","9 Nov
+2025",BUY,15K–50K,Tom Suozzi,,US TREASURY BILLS,2025-11-09,2025-12-02 00:00:00.000000,32500.0,Buy,Stock,
+"Virginia Foxx
+RepublicanHouseNC","Alliance Resource Partners LP
+ARLP:US","2 Dec
+2025","13 Nov
+2025",BUY,1K–15K,Virginia Foxx,ARLP,Alliance Resource Partners LP,2025-11-13,2025-12-02 00:00:00.000000,8000.0,Buy,Stock,
+"Virginia Foxx
+RepublicanHouseNC","Alliance Resource Partners LP
+ARLP:US","2 Dec
+2025","16 Nov
+2025",BUY,1K–15K,Virginia Foxx,ARLP,Alliance Resource Partners LP,2025-11-16,2025-12-02 00:00:00.000000,8000.0,Buy,Stock,
+"Virginia Foxx
+RepublicanHouseNC","Hercules Capital Inc
+HTGC:US","2 Dec
+2025","18 Nov
+2025",BUY,1K–15K,Virginia Foxx,HTGC,Hercules Capital Inc,2025-11-18,2025-12-02 00:00:00.000000,8000.0,Buy,Stock,
+"Sheldon Whitehouse
+DemocratSenateRI","The Hershey Co
+HSY:US","1 Dec
+2025","20 Nov
+2025",BUY,1K–15K,Sheldon Whitehouse,HSY,The Hershey Co,2025-11-20,2025-12-01 00:00:00.000000,8000.0,Buy,Stock,
+"Sheldon Whitehouse
+DemocratSenateRI","The Coca-Cola Co
+KO:US","1 Dec
+2025","20 Nov
+2025",BUY,1K–15K,Sheldon Whitehouse,KO,The Coca-Cola Co,2025-11-20,2025-12-01 00:00:00.000000,8000.0,Buy,Stock,
+"Sheldon Whitehouse
+DemocratSenateRI","Guardant Health Inc
+GH:US","1 Dec
+2025","20 Nov
+2025",BUY,1K–15K,Sheldon Whitehouse,GH,Guardant Health Inc,2025-11-20,2025-12-01 00:00:00.000000,8000.0,Buy,Stock,
+"Richard Blumenthal
+DemocratSenateCT","ELCM2 LLC
+N/A","1 Dec
+2025","22 Oct
+2025",BUY,15K–50K,Richard Blumenthal,,ELCM2 LLC,2025-10-22,2025-12-01 00:00:00.000000,32500.0,Buy,Stock,
+"Richard Blumenthal
+DemocratSenateCT","ELCM2 LLC
+N/A","1 Dec
+2025","30 Oct
+2025",SELL,15K–50K,Richard Blumenthal,,ELCM2 LLC,2025-10-30,2025-12-01 00:00:00.000000,32500.0,Sell,Stock,
+"Richard Blumenthal
+DemocratSenateCT","KIRKOSWALD GLOBAL MACRO FUND LP
+N/A","1 Dec
+2025","16 Oct
+2025",SELL,15K–50K,Richard Blumenthal,,KIRKOSWALD GLOBAL MACRO FUND LP,2025-10-16,2025-12-01 00:00:00.000000,32500.0,Sell,Stock,
+"Richard Blumenthal
+DemocratSenateCT","ELCM2 LLC
+N/A","1 Dec
+2025","22 Oct
+2025",BUY,50K–100K,Richard Blumenthal,,ELCM2 LLC,2025-10-22,2025-12-01 00:00:00.000000,75000.0,Buy,Stock,
+"Richard Blumenthal
+DemocratSenateCT","ELCM2 LLC
+N/A","1 Dec
+2025","30 Oct
+2025",SELL,100K–250K,Richard Blumenthal,,ELCM2 LLC,2025-10-30,2025-12-01 00:00:00.000000,175000.0,Sell,Stock,
+"Richard Blumenthal
+DemocratSenateCT","NOT FADE AWAY LLC
+N/A","1 Dec
+2025","30 Oct
+2025",BUY,1K–15K,Richard Blumenthal,,NOT FADE AWAY LLC,2025-10-30,2025-12-01 00:00:00.000000,8000.0,Buy,Stock,
+"Richard Blumenthal
+DemocratSenateCT","KIRKOSWALD GLOBAL MACRO FUND LP
+N/A","1 Dec
+2025","16 Oct
+2025",SELL,50K–100K,Richard Blumenthal,,KIRKOSWALD GLOBAL MACRO FUND LP,2025-10-16,2025-12-01 00:00:00.000000,75000.0,Sell,Stock,
+"Richard Blumenthal
+DemocratSenateCT","ELCM2 LLC
+N/A","1 Dec
+2025","30 Oct
+2025",SELL,500K–1M,Richard Blumenthal,,ELCM2 LLC,2025-10-30,2025-12-01 00:00:00.000000,250500000.0,Sell,Stock,
+"Richard Blumenthal
+DemocratSenateCT","NOT FADE AWAY LLC
+N/A","1 Dec
+2025","30 Oct
+2025",BUY,15K–50K,Richard Blumenthal,,NOT FADE AWAY LLC,2025-10-30,2025-12-01 00:00:00.000000,32500.0,Buy,Stock,
+"Lindsey Graham
+RepublicanSenateSC","VANGUARD US GROWTH FUND
+VWUSX:us","1 Dec
+2025","5 Nov
+2025",BUY,100K–250K,Lindsey Graham,VWUSX:us,VANGUARD US GROWTH FUND,2025-11-05,2025-12-01 00:00:00.000000,175000.0,Buy,Stock,
+"Lindsey Graham
+RepublicanSenateSC","VANGUARD US GROWTH FUND
+VWUSX:us","1 Dec
+2025","5 Nov
+2025",SELL,100K–250K,Lindsey Graham,VWUSX:us,VANGUARD US GROWTH FUND,2025-11-05,2025-12-01 00:00:00.000000,175000.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","BITWISE BITCOIN ETF
+BITB:US","27 Nov
+2025","24 Nov
+2025",BUY,15K–50K,Dave McCormick,BITB,BITWISE BITCOIN ETF,2025-11-24,2025-11-27 00:00:00.000000,32500.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","BITWISE BITCOIN ETF
+BITB:US","27 Nov
+2025","23 Nov
+2025",BUY,50K–100K,Dave McCormick,BITB,BITWISE BITCOIN ETF,2025-11-23,2025-11-27 00:00:00.000000,75000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","HEMPFIELD PA AREA SCHOOL DIST
+N/A","27 Nov
+2025","3 Nov
+2025",BUY,250K–500K,Dave McCormick,,HEMPFIELD PA AREA SCHOOL DIST,2025-11-03,2025-11-27 00:00:00.000000,375000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","OHIO WATER DEVELOPMENT AUTHORITY
+N/A","27 Nov
+2025","18 Nov
+2025",BUY,100K–250K,Dave McCormick,,OHIO WATER DEVELOPMENT AUTHORITY,2025-11-18,2025-11-27 00:00:00.000000,175000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","MONTGOMERY COUNTY INDUSTRIAL DEVELOPMENT
+N/A","27 Nov
+2025","17 Nov
+2025",BUY,100K–250K,Dave McCormick,,MONTGOMERY COUNTY INDUSTRIAL DEVELOPMENT,2025-11-17,2025-11-27 00:00:00.000000,175000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","GREATER LATROBE SCH AUTH
+N/A","27 Nov
+2025","30 Oct
+2025",BUY,100K–250K,Dave McCormick,,GREATER LATROBE SCH AUTH,2025-10-30,2025-11-27 00:00:00.000000,175000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","DANIEL BOONE AREA SCH DIST
+N/A","27 Nov
+2025","30 Oct
+2025",SELL,50K–100K,Dave McCormick,,DANIEL BOONE AREA SCH DIST,2025-10-30,2025-11-27 00:00:00.000000,75000.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","TOWNSHIP OF DERRY DAUPHIN COUNTY PENNSYLVANIA
+N/A","27 Nov
+2025","30 Oct
+2025",SELL,1K–15K,Dave McCormick,,TOWNSHIP OF DERRY DAUPHIN COUNTY PENNSYLVANIA,2025-10-30,2025-11-27 00:00:00.000000,8000.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","SALISBURY TOWNSHIP SCHOOL DISTRICT LEHIGH COUNTY PENNSYLVANIA
+N/A","27 Nov
+2025","30 Oct
+2025",SELL,15K–50K,Dave McCormick,,SALISBURY TOWNSHIP SCHOOL DISTRICT LEHIGH COUNTY PENNSYLVANIA,2025-10-30,2025-11-27 00:00:00.000000,32500.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","PHILADELPHIA WATER DEPARTMENT
+N/A","27 Nov
+2025","28 Oct
+2025",BUY,100K–250K,Dave McCormick,,PHILADELPHIA WATER DEPARTMENT,2025-10-28,2025-11-27 00:00:00.000000,175000.0,Buy,Stock,
+"Dave McCormick
+RepublicanSenatePA","UNIVERSITY OF PITTSBURGH
+N/A","27 Nov
+2025","27 Oct
+2025",SELL,50K–100K,Dave McCormick,,UNIVERSITY OF PITTSBURGH,2025-10-27,2025-11-27 00:00:00.000000,75000.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","SCHOOL DISTRICT OF HAVERFORD TOWNSHIP DELAWARE COUNTY PENNSYLVANIA
+N/A","27 Nov
+2025","27 Oct
+2025",SELL,15K–50K,Dave McCormick,,SCHOOL DISTRICT OF HAVERFORD TOWNSHIP DELAWARE COUNTY PENNSYLVANIA,2025-10-27,2025-11-27 00:00:00.000000,32500.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","DEPARTMENT OF STATE PENNSYLVANIA
+N/A","27 Nov
+2025","27 Oct
+2025",SELL,100K–250K,Dave McCormick,,DEPARTMENT OF STATE PENNSYLVANIA,2025-10-27,2025-11-27 00:00:00.000000,175000.0,Sell,Stock,
+"Dave McCormick
+RepublicanSenatePA","PENNSYLVANIA HIGHER EDUCATIONAL FACILITIES AUTHORITY
+N/A","27 Nov
+2025","27 Oct
+2025",BUY,100K–250K,Dave McCormick,,PENNSYLVANIA HIGHER EDUCATIONAL FACILITIES AUTHORITY,2025-10-27,2025-11-27 00:00:00.000000,175000.0,Buy,Stock,
+"Tina Smith
+DemocratSenateMN","Huntington Bancshares Inc
+HBAN:US","26 Nov
+2025","20 Nov
+2025",SELL,100K–250K,Tina Smith,HBAN,Huntington Bancshares Inc,2025-11-20,2025-11-26 00:00:00.000000,175000.0,Sell,Stock,
 "Gary Peters
 DemocratSenateMI","Organon & Co
 OGN:US","24 Nov
@@ -6239,68 +6499,13 @@ RepublicanHouseTX","Leidos Holdings Inc
 LDOS:US","16 Oct
 2025","6 Oct
 2025",SELL,1K–15K,Keith Self,LDOS,Leidos Holdings Inc,2025-10-06,2025-10-16 00:00:00.000000,8000.0,Sell,Stock,
-"Sheri Biggs
-RepublicanHouseSC","KKR REAL ESTATE SELECT TRUST INC
-N/A","6 Oct
-2025","28 Aug
-2025",BUY,1K–15K,Sheri Biggs,,KKR REAL ESTATE SELECT TRUST INC,2025-08-28,2025-10-06 00:00:00.000000,8000.0,Buy,Stock,
-"Richard Blumenthal
-DemocratSenateCT","BRAZIL GOVERNMENT BONDS
-N/A","25 Sept
-2025","31 Aug
-2025",BUY,250K–500K,Richard Blumenthal,,BRAZIL GOVERNMENT BONDS,2025-08-31,,375000.0,Buy,Stock,
-"Paul Mitchell
-OtherSenateMI","Wells Fargo & Co
-WFC:US","12 Sept
-2025","31 Aug
-2025",BUY,1K–15K,Paul Mitchell,WFC,Wells Fargo & Co,2025-08-31,,8000.0,Buy,Stock,
-"Michael McCaul
-RepublicanHouseTX","CAVCO INDUSTRIES INC
-N/A","12 Sept
-2025","28 Aug
-2025",BUY,100K–250K,Michael McCaul,,CAVCO INDUSTRIES INC,2025-08-28,,175000.0,Buy,Stock,
-"Michael McCaul
-RepublicanHouseTX","REDDIT INC
-RDDT:US","12 Sept
-2025","28 Aug
-2025",BUY,15K–50K,Michael McCaul,RDDT,REDDIT INC,2025-08-28,,32500.0,Buy,Stock,
-"Michael McCaul
-RepublicanHouseTX","Broadcom Inc
-AVGO:US","12 Sept
-2025","28 Aug
-2025",BUY,1K–15K,Michael McCaul,AVGO,Broadcom Inc,2025-08-28,,8000.0,Buy,Stock,
-"Michael McCaul
-RepublicanHouseTX","US TREASURY BILLS
-N/A","12 Sept
-2025","28 Aug
-2025",BUY,1K–15K,Michael McCaul,,US TREASURY BILLS,2025-08-28,,8000.0,Buy,Stock,
-"Michael McCaul
-RepublicanHouseTX","Broadcom Inc
-AVGO:US","12 Sept
-2025","28 Aug
-2025",SELL,1K–15K,Michael McCaul,AVGO,Broadcom Inc,2025-08-28,,8000.0,Sell,Stock,
-"Michael McCaul
-RepublicanHouseTX","Arista Networks Inc
-ANET:US","12 Sept
-2025","28 Aug
-2025",SELL,1K–15K,Michael McCaul,ANET,Arista Networks Inc,2025-08-28,,8000.0,Sell,Stock,
-"Michael McCaul
-RepublicanHouseTX","NVIDIA Corporation
-NVDA:US","12 Sept
-2025","28 Aug
-2025",SELL,1K–15K,Michael McCaul,NVDA,NVIDIA Corporation,2025-08-28,,8000.0,Sell,Stock,
-"Michael McCaul
-RepublicanHouseTX","The Timken Co
-TKR:US","12 Sept
-2025","28 Aug
-2025",SELL,100K–250K,Michael McCaul,TKR,The Timken Co,2025-08-28,,175000.0,Sell,Stock,
 "Tim Moore
-RepublicanHouseNC","YIELDMAX SMCI OPTION INCOME STRATEGY ETF
-SMCY:US","4 Sept
-2025","28 Aug
-2025",BUY,15K–50K,Tim Moore,SMCY,YIELDMAX SMCI OPTION INCOME STRATEGY ETF,2025-08-28,,32500.0,Buy,Stock,
-"Tina Smith
-DemocratSenateMN","Huntington Bancshares Inc
-HBAN:US","23:45
-Yesterday","20 Nov
-2025",SELL,100K–250K,Tina Smith,HBAN,Huntington Bancshares Inc,2025-11-20,2025-11-26 16:00:11.931830,175000.0,Sell,Stock,
+RepublicanHouseNC","Cracker Barrel Old Country Store Inc
+CBRL:US","3 Dec
+2025","27 Nov
+2025",SELL,15K–50K,Tim Moore,CBRL,Cracker Barrel Old Country Store Inc,2025-11-27,2025-12-03 00:00:00.000000,32500.0,Sell,Stock,
+"Tim Moore
+RepublicanHouseNC","Harley-Davidson Inc
+HOG:US","3 Dec
+2025","27 Nov
+2025",SELL,15K–50K,Tim Moore,HOG,Harley-Davidson Inc,2025-11-27,2025-12-03 00:00:00.000000,32500.0,Sell,Stock,

@@ -1,10 +1,29 @@
 import yfinance as yf
 import pandas as pd
 import logging
+import sys
+import os
+from contextlib import contextmanager
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+@contextmanager
+def suppress_stdout_stderr():
+    """
+    A context manager that redirects stdout and stderr to devnull
+    to suppress yfinance's verbose 404 errors.
+    """
+    with open(os.devnull, 'w') as devnull:
+        old_stdout = sys.stdout
+        old_stderr = sys.stderr
+        try:
+            sys.stdout = devnull
+            sys.stderr = devnull
+            yield
+        finally:
+            sys.stdout = old_stdout
+            sys.stderr = old_stderr
 
 class AssetEnricher:
     def __init__(self):
@@ -21,6 +40,13 @@ class AssetEnricher:
 
         ticker = ticker.strip().upper()
 
+        # FIX: Sanitize ticker for Yahoo Finance (BRK/B -> BRK-B)
+        ticker = ticker.replace('/', '-').replace('.', '-')
+
+        # Skip tickers starting with $ (Crypto) or digits (Invalid/Bond)
+        if ticker.startswith('$') or (len(ticker) > 0 and ticker[0].isdigit()):
+            return self._default_metadata()
+
         # 2. Check Cache
         if ticker in self._cache:
             return self._cache[ticker]
@@ -31,8 +57,10 @@ class AssetEnricher:
 
         # 4. Fetch from yfinance
         try:
-            stock = yf.Ticker(ticker)
-            info = stock.info
+            # Suppress the annoying 404 prints from yfinance
+            with suppress_stdout_stderr():
+                stock = yf.Ticker(ticker)
+                info = stock.info
 
             metadata = {
                 "name": info.get('shortName', 'Unknown'),

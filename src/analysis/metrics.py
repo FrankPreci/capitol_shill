@@ -28,6 +28,9 @@ class EventStudy:
         if not isinstance(ticker, str) or ticker in ['--', 'NaN', '']:
             return None
 
+        # FIX: Sanitize ticker for Yahoo Finance (BRK/B -> BRK-B)
+        ticker = ticker.strip().upper().replace('/', '-').replace('.', '-')
+
         #1. Define time windows
         #estimation window: t-00 to T-10 (used to learn the stocks normal behaiour)
         est_start = trade_date - timedelta(days=200)
