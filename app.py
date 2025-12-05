@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from src.data_store import sync_data, load_local_data
 from src.enrichment.asset_metadata import AssetEnricher
+from src.analysis.metrics import EventStudy
 
 st.set_page_config(
     page_title="Capitol Shill",
@@ -31,6 +32,15 @@ def get_data_pipeline():
     if 'sector' not in df.columns or df['sector'].isnull().any():
         enricher = AssetEnricher()
         df = enricher.enrich_dataframe(df)
+
+    # 3. Analyze (Calculate CAR - Cumulative Abnormal Returns)
+    # This fetches market data to see if trades beat the market
+    if 'car_30d' not in df.columns:
+        # We only run this if the column is missing to save time on re-runs
+        # (Though st.cache_data handles the big caching)
+        analyzer = EventStudy()
+        with st.spinner("Crunching market numbers (Calculating Alpha)..."):
+            df = analyzer.analyze_batch(df)
 
     return df
 
@@ -126,7 +136,7 @@ def main():
                 hole=0.4,
                 color_discrete_sequence=px.colors.qualitative.Prism
             )
-            st.plotly_chart(fig_pie, use_container_width=True)
+            st.plotly_chart(fig_pie)
         else:
             st.info("No sector info available (or no data selected).")
 
@@ -142,15 +152,39 @@ def main():
                 text='Trade Count',
                 color='Trade Count'
             )
-            st.plotly_chart(fig_bar, use_container_width=True)
+            st.plotly_chart(fig_bar)
         else:
             st.info("No trades found matching filters.")
+
+    # --- Market Beaters Section ---
+    st.subheader("Market Beaters (High Alpha Trades)")
+    st.markdown("Trades that significantly outperformed the S&P 500 over 30 days.")
+
+    if 'car_30d' in filtered_df.columns:
+        # Filter for positive alpha and drop NaNs
+        beaters_df = filtered_df[filtered_df['car_30d'] > 0.05].copy() # >5% abnormal return
+        
+        if not beaters_df.empty:
+            # Sort by highest return
+            beaters_df = beaters_df.sort_values(by='car_30d', ascending=False).head(10)
+            
+            # Format for display
+            display_beaters = beaters_df[['senator', 'ticker', 'transaction_date', 'type', 'amount_est', 'car_30d']].copy()
+            display_beaters['car_30d'] = display_beaters['car_30d'].apply(lambda x: f"+{x*100:.1f}%")
+            display_beaters['transaction_date'] = display_beaters['transaction_date'].dt.strftime('%Y-%m-%d')
+            
+            st.table(display_beaters)
+        else:
+            st.info("No significant market beaters found in current selection.")
+    else:
+        st.info("Calculated returns not available yet.")
+
 
     # --- Data Table ---
     st.subheader("Transaction Log")
 
     view_cols = ['disclosure_date', 'transaction_date', 'senator', 'ticker', 'type', 'amount_est', 'sector',
-                 'asset_description']
+                 'asset_description', 'car_30d']
     # Safety check for missing columns
     final_cols = [c for c in view_cols if c in filtered_df.columns]
 
@@ -170,6 +204,11 @@ def main():
         disclosure_date = table_df['disclosure_date'].dt.strftime('%Y-%m-%d').fillna(""),
         transaction_date = table_df['transaction_date'].dt.strftime('%Y-%m-%d').fillna("")
     )
+
+    # Format car_30d as percentage if it exists
+    if 'car_30d' in table_df.columns:
+        # Multiply by 100 and add % sign, handling NaNs
+        table_df['car_30d'] = table_df['car_30d'].apply(lambda x: f"{x*100:.2f}%" if pd.notnull(x) else "")
 
     st.dataframe(table_df, use_container_width=True, height=500)
 

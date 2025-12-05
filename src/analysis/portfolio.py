@@ -9,14 +9,26 @@ logger = setup_logger(__name__)
 class PortfolioManager:
     def __init__(self, tickers: list):
         # Improved Filter: Must be a string, not '--' or '---'
-        self.tickers = [
-            t.upper() for t in tickers
-            if isinstance(t, str)
-               and len(t) > 1
-               and t not in ['--', '---', 'NaN']
-               and t.replace('.', '').isalnum()
-        ]
-        self.tickers = list(set(self.tickers))
+        # Also sanitize for Yahoo Finance (BRK/B -> BRK-B)
+        cleaned_tickers = []
+        for t in tickers:
+            if not isinstance(t, str):
+                continue
+            t = t.strip().upper()
+            if len(t) <= 1 or t in ['--', '---', 'NaN']:
+                continue
+            
+            # Check for validity (allow alphanumeric + hyphens/dots/slashes)
+            # We'll just check if the "core" characters are alphanumeric
+            core_chars = t.replace('.', '').replace('/', '').replace('-', '')
+            if not core_chars.isalnum():
+                continue
+
+            # Sanitize
+            sanitized = t.replace('/', '-').replace('.', '-')
+            cleaned_tickers.append(sanitized)
+
+        self.tickers = list(set(cleaned_tickers))
 
     def optimize_portfolio(self):
         if not self.tickers:
