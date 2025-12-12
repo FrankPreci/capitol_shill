@@ -61,7 +61,7 @@ class CapitolTradesClient:
             while current_page <= max_pages:
                 # URL construction - passing the date filter to keep it 100
                 url = f"{self.BASE_URL}?txDate={date_range_str}&pageSize=96&page={current_page}"
-                logger.info(f"Yeeting request to Page {current_page}...")
+                logger.info(f"Sending request to Page {current_page}...")
 
                 try:
                     page.goto(url, timeout=60000)

@@ -48,7 +48,7 @@ def get_data_pipeline():
 def main():
     st.title("Capitol Shill")
     st.markdown('### Live trading surveillance ###')
-    st.markdown('Monitoring real-time stock Stright from capitol hill')
+    st.markdown('Monitoring real-time stock Stright from Capitol Hill')
     st.divider()
 
     # Load Data
