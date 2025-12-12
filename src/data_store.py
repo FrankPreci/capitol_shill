@@ -10,7 +10,7 @@ DATA_PATH = Path("data/processed/senate_trades_history.csv")
 
 
 def load_local_data() -> pd.DataFrame:
-    """Reads the CSV. No cap."""
+    """Reads the CSV."""
     if not DATA_PATH.exists():
         return pd.DataFrame()
     try:
@@ -39,16 +39,16 @@ def sync_data():
         last_date = df_local['transaction_date'].max()
         # Format it for the scraper URL
         start_date = last_date.strftime('%Y-%m-%d')
-        print(f" Local data found up to {start_date}. Checking for fresh tea...")
+        print(f" Local data found up to {start_date}. Checking for new data...")
     else:
-        print("🆕 No local data. Finna do a full 90-day scrape...")
+        print("🆕 No local data. Now scraping full 90-days.")
 
     # Run the scraper
     client = CapitolTradesClient()
     df_new = client.fetch_trades(start_date=start_date)
 
     if df_new.empty:
-        print(" No new trades found. We good.")
+        print(" No new trades found. Up to date.")
         return df_local
 
     # Merge logic (Avoid dupes)

@@ -13,8 +13,8 @@ logger = setup_logger(__name__)
 class CapitolTradesClient:
     """
     Scrapes capitoltrades.com directly. No API key needed.
-    We stan a free data source.
     """
+    # We stan a free data source.!
 
     BASE_URL = "https://www.capitoltrades.com/trades"
 
@@ -32,12 +32,12 @@ class CapitolTradesClient:
         # Construct the URL query range: txDate=YYYY-MM-DD,YYYY-MM-DD
         # This sorts the tea by date so we get the fresh stuff first
         date_query = f"{start_date},{today_str}"
-        logger.info(f"Finna scrape trades from {start_date} to {today_str}...")
+        logger.info(f"Scraping trades from {start_date} to {today_str}...")
 
         raw_data = self._run_scraper(date_query)
 
         if not raw_data:
-            logger.warning("Scraper came back with zero riz. Empty list.")
+            logger.warning("Scraper came back with zero. Empty list.")
             return pd.DataFrame()
 
         # Glow up the data before returning
@@ -80,12 +80,12 @@ class CapitolTradesClient:
                     try:
                         page.wait_for_selector("tbody tr", state="attached", timeout=10000)
                     except:
-                        logger.info("Timed out waiting for data. Page is prob empty.")
+                        logger.info("Timed out waiting for data. Page may be empty.")
                         break
 
                     rows = page.locator("tbody tr").all()
                     if not rows:
-                        logger.info("Zero rows found. We done here.")
+                        logger.info("Zero rows found. Complete.")
                         break
 
                     # Loop through the rows and secure the bag
@@ -111,7 +111,7 @@ class CapitolTradesClient:
                     time.sleep(random.uniform(1.0, 3.0))
 
                 except Exception as e:
-                    logger.error(f"Big L on page {current_page}: {e}")
+                    logger.error(f"Error on page {current_page}: {e}")
                     break
 
             browser.close()
@@ -120,7 +120,7 @@ class CapitolTradesClient:
 
     def _normalize_data(self, raw_data: list) -> pd.DataFrame:
         """
-        Takes the raw scraped JSON and gives it a glow up (Standard Schema).
+        Takes the raw scraped JSON and gives it a Standard Schema.
         """
         df = pd.DataFrame(raw_data)
         if df.empty: return df

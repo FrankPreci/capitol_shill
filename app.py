@@ -47,16 +47,16 @@ def get_data_pipeline():
 
 def main():
     st.title("Capitol Shill")
-    st.markdown('### Live trading surveillance (NSA type shit)###')
+    st.markdown('### Live trading surveillance ###')
     st.markdown('Monitoring real-time stock Stright from capitol hill')
     st.divider()
 
     # Load Data
-    with st.spinner('Fetchin data.'):
+    with st.spinner('Fetching data.'):
         df = get_data_pipeline()
 
     if df.empty:
-        st.error("Data ghosted us. Run the scraper manually or check connection.")
+        st.error("Error: Run the scraper manually or check connection.")
         st.stop()
 
     # --- Header Metrics ---
