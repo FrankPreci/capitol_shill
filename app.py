@@ -14,7 +14,7 @@ st.set_page_config(
 
 
 # Cache this so we don't re-enrich on every UI click
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=300)
 def get_data_pipeline():
     # 1. Sync Data (Scrape & Append)
     # Try to update, fallback to local if scraper fails (e.g. no internet)
@@ -50,6 +50,10 @@ def main():
     st.markdown('### Live trading surveillance ###')
     st.markdown('Monitoring real-time stock Stright from Capitol Hill')
     st.divider()
+    # Refresh button
+    if st.sidebar.button("🔄 Refresh Data"):
+        st.cache_data.clear()
+        st.rerun()
 
     # Load Data
     with st.spinner('Fetching data.'):
@@ -210,7 +214,7 @@ def main():
         # Multiply by 100 and add % sign, handling NaNs
         table_df['car_30d'] = table_df['car_30d'].apply(lambda x: f"{x*100:.2f}%" if pd.notnull(x) else "")
 
-    st.dataframe(table_df, use_container_width=True, height=500)
+    st.dataframe(table_df, width='stretch', height=500)
 
 
 if __name__ == '__main__':

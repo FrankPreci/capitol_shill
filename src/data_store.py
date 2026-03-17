@@ -33,7 +33,7 @@ def sync_data():
     """
     df_local = load_local_data()
 
-    start_date = None
+    start_date = None  # Default to 90 days ago
     if not df_local.empty:
         # Find the latest trade we already have
         last_date = df_local['transaction_date'].max()
@@ -50,6 +50,11 @@ def sync_data():
     if df_new.empty:
         print(" No new trades found. Up to date.")
         return df_local
+    
+    # Want to compare df_local to df_new before merge to view how many new records we got. This is just for logging, not required for merge.
+    if not df_local.empty:
+        new_records = len(df_new)
+        print(f"\nFound {new_records} new trades since {start_date}. Updating database...\n")
 
     # Merge logic (Avoid dupes)
     if not df_local.empty:

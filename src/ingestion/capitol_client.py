@@ -1,10 +1,19 @@
+# CapitolTradesClient: Scrapes capitoltrades.com for insider trading data without needing an API key. 
+# Uses Playwright to navigate the site and extract trade information, then normalizes it into a structured DataFrame. 
+# Designed to be robust against site changes and includes logging for transparency.
 import pandas as pd
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, Playwright 
 from datetime import datetime, timedelta
 import time
 import random
 import logging
+import sys
+import asyncio
 from src.utils.logger import setup_logger
+
+# Set asyncio event loop policy for Windows to support subprocess (cured the "RuntimeError: Event loop is closed" issue)
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 # Finna set up logging to catch any sus behavior
 logger = setup_logger(__name__)
@@ -23,7 +32,7 @@ class CapitolTradesClient:
         Main entry point. Scrapes from start_date to Today.
         start_date format: 'YYYY-MM-DD'
         """
-        today_str = datetime.now().strftime('%Y-%m-%d')
+        today_str = datetime.now().strftime('%Y-%m-%d') 
 
         # If no start date, we go back 90 days. No cap.
         if not start_date:
@@ -56,7 +65,7 @@ class CapitolTradesClient:
             page = context.new_page()
 
             current_page = 1
-            max_pages = 50  # Don't be extra, stop at 50 pages
+            max_pages = 50  # Safety cap to prevent infinite loops
 
             while current_page <= max_pages:
                 # URL construction - passing the date filter to keep it 100

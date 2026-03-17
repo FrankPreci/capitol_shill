@@ -39,7 +39,7 @@ class PortfolioManager:
 
         try:
             # 1. Download Data
-            df = yf.download(self.tickers, period="2y", progress=False, auto_adjust=False)['Adj Close']
+            df = yf.download(self.tickers, period="3m", progress=False, auto_adjust=False)['Adj Close']
 
             if isinstance(df, pd.Series):
                 df = df.to_frame()
@@ -50,7 +50,7 @@ class PortfolioManager:
             df = df.dropna(axis=1, thresh=int(len(df) * 0.8))
 
             if df.empty or df.shape[1] < 2:
-                logger.warning("Insufficient data (needs at least 2 stocks with 2y history).")
+                logger.warning("Insufficient data (needs at least 2 stocks with 3m history).")
                 return None
 
             # 2. Optimization

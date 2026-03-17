@@ -14,7 +14,7 @@ def suppress_stdout_stderr():
     A context manager that redirects stdout and stderr to devnull
     to suppress yfinance's verbose 404 errors.
     """
-    with open(os.devnull, 'w') as devnull:
+    with open(os.devnull, 'w') as devnull: 
         old_stdout = sys.stdout
         old_stderr = sys.stderr
         try:

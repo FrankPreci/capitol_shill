@@ -17,7 +17,7 @@ def scrape_capitol_trades_90d():
         current_page = 1
         # 90 days is usually around 5-10 pages, but we set 50 to be safe.
         # The script will auto-stop when it hits an empty page.
-        max_pages = 50
+        max_pages = 20
 
         while current_page <= max_pages:
             # UPDATED URL: Added 'txDate=90d' to filter results
@@ -87,6 +87,7 @@ def scrape_capitol_trades_90d():
         browser.close()
 
     # Save to JSON
+    # if json file already exists, we will overwrite it with the new data. In a real application, you might want to append or handle this differently.
     filename = "capitol_trades_90d.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
