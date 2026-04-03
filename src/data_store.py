@@ -1,5 +1,9 @@
+# This module handles data storage and synchronization for the Senate trades dataset.
+# It checks the local CSV for the most recent trade date, scrapes only new trades from the website, merges them with existing data 
+# while avoiding duplicates, and saves the updated dataset back to disk.
 import pandas as pd
 from pathlib import Path
+from datetime import datetime, timedelta
 from src.ingestion.capitol_client import CapitolTradesClient
 import logging
 
@@ -7,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 # Where we keep the loot
 DATA_PATH = Path("data/processed/senate_trades_history.csv")
-
 
 def load_local_data() -> pd.DataFrame:
     """Reads the CSV."""
@@ -24,24 +27,33 @@ def load_local_data() -> pd.DataFrame:
         return pd.DataFrame()
 
 
-def sync_data():
+def sync_data(MAX_LOOKBACK_DAYS: int = 365):
     """
     The Master Function.
     1. Checks local DB for last date.
-    2. Scrapes only what's new.
-    3. Merges and Saves.
+    2. Scrapes only what's new (within lookback limit).
+    3. Trims old rows to avoid stale analysis and saves.
     """
     df_local = load_local_data()
 
-    start_date = None  # Default to 90 days ago
+    cutoff_date = pd.Timestamp(datetime.now() - timedelta(days=MAX_LOOKBACK_DAYS)).normalize()
+    print(f"\nCutoff date: {cutoff_date.date()}\n")
+
     if not df_local.empty:
-        # Find the latest trade we already have
+        # Limit local records to a rolling 90-day window, then refresh from the newest allowed date.
+        old_len = len(df_local)
+        df_local = df_local[df_local['transaction_date'] >= cutoff_date].copy()
+        if len(df_local) != old_len:
+            print(f"Pruned {old_len - len(df_local)} stale rows older than {MAX_LOOKBACK_DAYS} days.")
+
+    start_date = None
+    if not df_local.empty:
         last_date = df_local['transaction_date'].max()
-        # Format it for the scraper URL
         start_date = last_date.strftime('%Y-%m-%d')
-        print(f" Local data found up to {start_date}. Checking for new data...")
+        print(f"Local data found up to {start_date}. Checking for new data within {MAX_LOOKBACK_DAYS}-day window...")
     else:
-        print("🆕 No local data. Now scraping full 90-days.")
+        start_date = cutoff_date.strftime('%Y-%m-%d')
+        print(f"🆕 No local data (or all old data pruned). Scraping from {start_date} onwards.")
 
     # Run the scraper
     client = CapitolTradesClient()
@@ -67,6 +79,9 @@ def sync_data():
         )
     else:
         df_combined = df_new
+
+    # Prune combined dataset again to ensure we keep only the latest window
+    df_combined = df_combined[df_combined['transaction_date'] >= cutoff_date].copy()
 
     # Save to disk (Persistence)
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)

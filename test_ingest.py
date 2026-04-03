@@ -1,4 +1,4 @@
-from src.ingestion.capitol_client import SenateStockWatcherClient
+from src.ingestion.capitol_client import CapitolTradesClient
 from src.enrichment.asset_metadata import AssetEnricher
 from src.analysis.metrics import EventStudy
 from src.analysis.portfolio import PortfolioManager
@@ -12,8 +12,8 @@ pd.set_option('display.width', 1000)
 def test_pipeline():
     # 1. Ingest
     print("--- 1. Ingestion ---")
-    client = SenateStockWatcherClient()
-    df = client.fetch_all_transactions()
+    client = CapitolTradesClient()
+    df = client.fetch_trades()
 
     # 2. Filter Data (The Cleanup Step)
     print("--- 2. Filtering & Cleaning ---")

@@ -1,10 +1,14 @@
+# This script scrapes trade data from Capitol Trades for the last 365 days. It uses Playwright to navigate the site, handle 
+# pagination, and extract trade details. The results are filtered to include only trades from the last 365 days and saved to a 
+# JSON file. The script includes error handling and logging for transparency. 
 from playwright.sync_api import sync_playwright
 import json
 import time
 import random
+from datetime import datetime, timedelta
 
 
-def scrape_capitol_trades_90d():
+def scrape_capitol_trades_365d():
     results = []
 
     with sync_playwright() as p:
@@ -12,16 +16,17 @@ def scrape_capitol_trades_90d():
         context = browser.new_context()
         page = context.new_page()
 
-        print("Starting scraper for the last 90 days...")
+        print("Starting scraper for the last 365 days...")
 
         current_page = 1
-        # 90 days is usually around 5-10 pages, but we set 50 to be safe.
+        # 365 days will have more pages, but we set 100 to be safe.
         # The script will auto-stop when it hits an empty page.
-        max_pages = 20
+        max_pages = 100
+        time_frame = "365" # In days
 
         while current_page <= max_pages:
-            # UPDATED URL: Added 'txDate=90d' to filter results
-            url = f"https://www.capitoltrades.com/trades?txDate=90d&pageSize=96&page={current_page}"
+            # UPDATED URL: Added 'txDate=365d' to filter results
+            url = f"https://www.capitoltrades.com/trades?txDate={time_frame}d&pageSize=96&page={current_page}"
             print(f"Scraping {url} ...")
 
             try:
@@ -86,14 +91,42 @@ def scrape_capitol_trades_90d():
 
         browser.close()
 
+    # Filter results to only include trades from the last 365 days
+    three_six_five_days_ago = datetime.now() - timedelta(days=365)
+    filtered_results = []
+
+    for trade in results:
+        try:
+            # Parse the trade date (assuming format like "Mar 15, 2024" or similar)
+            trade_date_str = trade.get('trade_date', '')
+            if trade_date_str:
+                # Try to parse various date formats that might appear on the site
+                try:
+                    trade_date = datetime.strptime(trade_date_str, '%b %d, %Y')
+                except ValueError:
+                    try:
+                        trade_date = datetime.strptime(trade_date_str, '%m/%d/%Y')
+                    except ValueError:
+                        # If we can't parse the date, skip this trade
+                        continue
+
+                # Only keep trades from the last 365 days
+                if trade_date >= three_six_five_days_ago:
+                    filtered_results.append(trade)
+        except Exception:
+            # If there's any issue parsing, skip this trade
+            continue
+
+    print(f"Filtered {len(results)} total trades to {len(filtered_results)} trades within 365 days.")
+
     # Save to JSON
     # if json file already exists, we will overwrite it with the new data. In a real application, you might want to append or handle this differently.
-    filename = "capitol_trades_90d.json"
+    filename = "capitol_trades_365d.json"
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=4)
+        json.dump(filtered_results, f, indent=4)
 
-    print(f"Done! Scraped {len(results)} trades total.")
+    print(f"Done! Saved {len(filtered_results)} trades within the 365-day timeframe.")
 
 
 if __name__ == "__main__":
-    scrape_capitol_trades_90d()
+    scrape_capitol_trades_365d()

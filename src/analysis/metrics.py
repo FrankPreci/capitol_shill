@@ -1,3 +1,8 @@
+# This module defines the EventStudy class, which calculates financial metrics such as Cumulative Abnormal Return (CAR) for a 
+# given trade.It uses the yfinance library to fetch historical stock and benchmark data, applies a linear regression to estimate 
+# expected returns, and computes the CAR over a specified event window. The analyze_batch method allows for applying this 
+# calculation across an entire DataFrame of trades, adding a new 'car_30d' column with the results. The code includes robust error 
+# handling and logging for transparency.
 import pandas as pd
 import numpy as np
 import yfinance as yf
@@ -38,8 +43,8 @@ class EventStudy:
         ticker = TICKER_MAP.get(ticker, ticker)
 
         # Define time windows
-        est_start = trade_date - timedelta(days=200)
-        est_end = trade_date - timedelta(days=10)
+        est_start = trade_date - timedelta(days=200)  # Estimation window starts 200 days before trade
+        est_end = trade_date - timedelta(days=10)  
         evt_end = trade_date + timedelta(days=window_days)
 
         try:

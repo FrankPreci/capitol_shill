@@ -1,3 +1,8 @@
+# This module defines the AssetEnricher class, which is responsible for fetching and enriching asset metadata 
+# (Sector, Industry, Name, Market Cap) for a given ticker symbol using the yfinance library. 
+# It includes caching to optimize repeated lookups and handles various edge cases for invalid tickers. 
+# The enrich_dataframe method applies this enrichment to an entire DataFrame of trades, ensuring that existing columns
+# are handled gracefully to prevent crashes.
 import yfinance as yf
 import pandas as pd
 import logging

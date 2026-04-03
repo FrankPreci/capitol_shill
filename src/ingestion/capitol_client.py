@@ -18,6 +18,8 @@ if sys.platform == 'win32':
 # Finna set up logging to catch any sus behavior
 logger = setup_logger(__name__)
 
+DEFAULT_LOOKBACK_DAYS = 365
+
 
 class CapitolTradesClient:
     """
@@ -34,9 +36,9 @@ class CapitolTradesClient:
         """
         today_str = datetime.now().strftime('%Y-%m-%d') 
 
-        # If no start date, we go back 90 days. No cap.
+        # If no start date, we go back 90 days by default (avoid analyzing stale history).
         if not start_date:
-            start_date = (datetime.now() - timedelta(days=90)).strftime('%Y-%m-%d')
+            start_date = (datetime.now() - timedelta(days=DEFAULT_LOOKBACK_DAYS)).strftime('%Y-%m-%d')
 
         # Construct the URL query range: txDate=YYYY-MM-DD,YYYY-MM-DD
         # This sorts the tea by date so we get the fresh stuff first
@@ -65,7 +67,7 @@ class CapitolTradesClient:
             page = context.new_page()
 
             current_page = 1
-            max_pages = 50  # Safety cap to prevent infinite loops
+            max_pages = 100  # Safety cap to prevent infinite loops
 
             while current_page <= max_pages:
                 # URL construction - passing the date filter to keep it 100

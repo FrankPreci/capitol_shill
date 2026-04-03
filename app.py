@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st     #streamlit for Visualization/UI
 import pandas as pd
 import plotly.express as px
 from src.data_store import sync_data, load_local_data
@@ -14,15 +14,24 @@ st.set_page_config(
 
 
 # Cache this so we don't re-enrich on every UI click
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=300) 
 def get_data_pipeline():
-    # 1. Sync Data (Scrape & Append)
-    # Try to update, fallback to local if scraper fails (e.g. no internet)
-    try:
-        df = sync_data()
-    except Exception as e:
-        st.error(f"Scraper caught an L: {e}")
-        df = load_local_data()
+    # 1. Check if we need to sync
+    df_local = load_local_data()
+    now = pd.Timestamp.now()
+    one_week_ago = now - pd.Timedelta(days=7)
+    
+    needs_sync = df_local.empty or (df_local['transaction_date'].max() < one_week_ago)
+    
+    if needs_sync:
+        # Sync Data (Scrape & Append)
+        try:
+            df = sync_data()
+        except Exception as e:
+            st.error(f"Scraper caught an L: {e}")
+            df = df_local if not df_local.empty else pd.DataFrame()
+    else:
+        df = df_local
 
     if df.empty:
         return pd.DataFrame()
@@ -39,7 +48,7 @@ def get_data_pipeline():
         # We only run this if the column is missing to save time on re-runs
         # (Though st.cache_data handles the big caching)
         analyzer = EventStudy()
-        with st.spinner("Crunching market numbers (Calculating Alpha)..."):
+        with st.spinner("Crunching market numbers (Calculating Alpha)..."): #Loading spinner
             df = analyzer.analyze_batch(df)
 
     return df
@@ -92,6 +101,19 @@ def main():
         selected_sectors = []
 
 
+    # Lookback window control
+    timeframe_options = {
+        "1 day": 1,
+        "1 week": 7,
+        "1 month": 30,
+        "3 months": 90,
+        "6 months": 180,
+        "1 year": 365,
+    }
+    selected_timeframe = st.sidebar.selectbox("Max timeframe", list(timeframe_options.keys()), index=2)
+    lookback_days = timeframe_options[selected_timeframe]
+    cutoff_date = pd.Timestamp.now() - pd.Timedelta(days=lookback_days)
+
     # Ticker filter
     all_tickers = sorted(df['ticker'].dropna().unique().tolist())
     selected_ticker = st.sidebar.selectbox("Specific Ticker", ["All"] + all_tickers)
@@ -99,17 +121,17 @@ def main():
     # Apply filters
     filtered_df = df.copy()
 
-    # Updated Filter Logic — Change starts here
-    if not selected_senators and not selected_sectors:
-        filtered_df = df.copy()  # show all rows if both empty
-    else:
-        if selected_senators:
-            filtered_df = filtered_df[filtered_df['senator'].isin(selected_senators)]
-        if selected_sectors:
-            filtered_df = filtered_df[filtered_df['sector'].isin(selected_sectors)]
+    # Senator/Sector filters
+    if selected_senators:
+        filtered_df = filtered_df[filtered_df['senator'].isin(selected_senators)]
+    if selected_sectors:
+        filtered_df = filtered_df[filtered_df['sector'].isin(selected_sectors)]
 
     if selected_ticker != "All":
         filtered_df = filtered_df[filtered_df['ticker'] == selected_ticker]
+
+    # Keep only the requested date window
+    filtered_df = filtered_df[filtered_df['transaction_date'] >= cutoff_date]
 
     # --- Metrics ---
     total_vol = filtered_df['amount_est'].sum()
@@ -195,15 +217,6 @@ def main():
     # Sort by Disclosure Date (Newest first)
     table_df = filtered_df[final_cols].sort_values(by='disclosure_date', ascending=False)
 
-    # st.dataframe(
-    #     table_df.style.format({
-    #         "amount_est": "${:,.0f}",
-    #         "disclosure_date": "{:%Y-%m-%d}",
-    #         "transaction_date": "{:%Y-%m-%d}"
-    #     }),
-    #     use_container_width=True,
-    #     height=500
-    # )
     table_df = table_df.assign(
         disclosure_date = table_df['disclosure_date'].dt.strftime('%Y-%m-%d').fillna(""),
         transaction_date = table_df['transaction_date'].dt.strftime('%Y-%m-%d').fillna("")
